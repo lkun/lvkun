@@ -1,0 +1,44 @@
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class MyFrame extends Frame {
+	public Button a;
+	public Button b;
+	public TextArea t;
+	boolean result;
+	public static int rands(int i){
+		Random rand=new Random();
+		return rand.nextInt(i);
+	}
+	public MyFrame(){
+		JFrame frame=new JFrame("文本||按钮||随机数");
+		frame.setSize(300,160);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setLayout(new FlowLayout());
+        a = new Button("随机数");
+        b = new Button("清除");
+        t = new TextArea(4,38);
+        frame.add(t); 
+        frame.add(a); 
+        frame.add(b);   
+        a.addActionListener(listen);   
+        b.addActionListener(listen1);        
+	}
+	public ActionListener listen=new ActionListener(){
+	public void actionPerformed(ActionEvent e){
+		int num=rands(20);
+		t.setText(String.valueOf(num));
+	}
+	};
+        public ActionListener listen1=new ActionListener(){
+	public void actionPerformed(ActionEvent e){
+		t.setText("");//清除
+	}
+	};
+        public static void main(String[] args) {
+		MyFrame g=new MyFrame();
+	}
+	
+}
