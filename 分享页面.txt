@@ -1,0 +1,48 @@
+**lvk 的分享**
+==================
+==================
+==================
+>            **==================**
+
+# 描述 #
+
+**这是一个开源的分享平台，这里有你们曾经想得到而又得不到的东西，而这里能给你意想不到的收获！**
+
+> 分享是一种快乐！ -- lvk
+
+---------------------------------------
+
+# 作业 #
+
++ 进程调度算法
++ 班级管理系统
+	- 学生基本资料
+	- 学生成绩查询
+
+---------------------------------------
+
+# 样例代码 #
+
+	#include <iostream>
+
+
+	int main(){
+		std::cout << "hello world!" << std::endl;
+		return 0;
+	}
+
+# Logo #
+
+![风景](https://raw.github.com/lkun/lvkun/master/Image/Image1.jpg)
+![风景](https://raw.github.com/lkun/lvkun/master/Image/Image3.jpg)
+![风景](https://raw.github.com/lkun/lvkun/master/Image/Image2.jpg)
+
+
+# 参考链接 #
+* [新浪微博](http://weibo.com/u/2104297147?topnav=1&wvr=5)
+* [36kr](http://www.36kr.com/)
+* [皮皮书屋](http://www.ppurl.com/login/)
+* [CSDN](http://www.csdn.net/)
+* [爱范儿](http://www.ifanr.com/)
+* [花瓣网](http://huaban.com/)
+× [openshift](https://openshift.redhat.com/app/)
