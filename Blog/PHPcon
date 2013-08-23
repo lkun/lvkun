@@ -1,0 +1,103 @@
+PHP语言经常被程序员用来开发网站，在实际操作中肯定会与数据库打上交道。今天我们就为大家介绍有关PHP连接数据库的各种方法，希望对大家有用。
+
+解读PHP函数strrev()以外的三种逆序排列
+PHP自定义异常处理器的几种使用方法
+如何正确实现PHP网站优化
+教你如何正确安装phpDocumentor
+如何正确配置PHP开发环境
+PHP连接数据库之PHP连接MYSQL数据库代码
+
+< ?php   
+$mysql_server_name='localhost'; 
+//改成自己的mysql数据库服务器  
+$mysql_username='root'; 
+//改成自己的mysql数据库用户名  
+$mysql_password='12345678'; 
+//改成自己的mysql数据库密码  
+$mysql_database='mycounter';
+ //改成自己的mysql数据库名  
+$conn=mysql_connect($mysql_server_name,
+$mysql_username,$mysql_password,
+$mysql_database);   
+$sql='CREATE DATABASE mycounter 
+DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;   
+';   
+mysql_query($sql);   
+$sql='CREATE TABLE `counter` 
+(`id` INT(255) UNSIGNED NOT NULL 
+AUTO_INCREMENT ,`count` INT(255) 
+UNSIGNED NOT NULL DEFAULT 0,PRIMARY KEY 
+( `id` ) ) TYPE = innodb;';   
+mysql_select_db($mysql_database,$conn);   
+$result=mysql_query($sql);   
+//echo $sql;   
+mysql_close($conn);   
+echo "Hello!数据库mycounter已经成功建立！";   
+?> 
+PHP连接数据库之PHP连接ACCESS数据库代码方法
+
+< ?  
+$conn = new com("ADODB.Connection");   
+$connstr = "DRIVER={Microsoft
+ Access Driver (*.mdb)}; 
+DBQ=". realpath("data/db.mdb");   
+$conn->Open($connstr);   
+$rs = new com("ADODB.RecordSet");   
+$rs->Open("select *
+ from szd_t",$conn,1,1);   
+while(! $rs->eof) {   
+$f = $rs->Fields(1);   
+echo $f->value;   
+$rs->MoveNext();   
+}   
+?> 
+PHP连接数据库之PHP连接MS SQL数据库代码方法
+
+1.安装SQL服务器并添加PHP的MSSQL扩展
+
+2.使用以下代码连接并测试
+
+< ?php   
+$myServer = localhost; //主机  
+$myUser = sa; //用户名  
+$myPass = password; //密码  
+$myDB = Northwind; //MSSQL库名  
+$s = @mssql_connect($myServer,
+ $myUser, $myPass)   
+or die(Couldnt connect to 
+SQL Server on $myServer);   
+$d = @mssql_select_db($myDB, $s)   
+or die(Couldnt open database $myDB);   
+$query = SELECT TitleOfCourtesy
++ +FirstName+ +LastName AS Employee ;   
+$query .= FROM Employees ;   
+$query .= WHERE Country=USA 
+AND Left(HomePhone, 5) = (206);   
+$result = mssql_query($query);   
+$numRows = mssql_num_rows($result);   
+echo < h1> . $numRows . Row .
+ ($numRows == 1 ? : s) . Returned </ h1>;   
+while($row = mssql_fetch_array($result))   
+{   
+echo < li> . $row[Employee] . < /li>;   
+}   
+?>  
+PHP连接数据库之PHP连接Oracle数据库
+
+PHP提供了两套函数与Oracle连接，分别是ORA_和OCI函数。其中ORA_函数略显陈旧。OCI函数更新据说更好一些。两者的使用语法几乎相差无几。你的PHP安装选项应该可以支持两者的使用。
+
+<　? 
+if ($conn=Ora_Logon
+
+("user@TNSNAME","password"))   
+{ echo "SUCCESS ! 
+Connected to database\n";   
+}else   
+{echo "Failed :-( 
+Could not connect to database\n";}   
+Ora_Logoff($conn);   
+phpinfo();   
+?>   
+ 
+以上PHP连接数据库的代码使用TNSNAME（在你的tnsnames.ora文件中指明）定义的Oracle数据库名称、用户名称和密码连接数据库。在成功连接的基础上，ora_logon函数返回一个非零的连接ID并储存在变量$conn中。
+
