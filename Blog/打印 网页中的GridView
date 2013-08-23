@@ -1,0 +1,39 @@
+打印网页中的 GridView
+
+本文介绍打印网页中某个GirdView的一种方法。主要思路是将GridView放在一个DIV中，然后将该DIV显示在新的网页中，并用window.print()方法来打印新打开的网页。
+
+先将GridView放在DIV中，此DIV就是打印区域。
+
+
+代码
+1 <div id="PrintArea">
+2  <asp:GridView ClientIDMode="Static" ID="GV" runat="server" AutoGenerateColumns="False">
+3     <Columns>
+4         <asp:BoundField DataField="ID" HeaderText="ID" />
+5         <asp:BoundField DataField="Name" HeaderText="Name" />
+6     </Columns>
+7 </asp:GridView>        
+8 </div>
+
+ 
+
+然后写一个Javascript函数，它将打开一个新网页，并将指定DIV中的内容写入该网页，再打印该网页，打印完毕后关闭该网页。
+
+
+代码
+ 1 function PrintGridView() {
+ 2     // 打开一个新网页
+ 3     var newwindow = window.open('');
+ 4 
+ 5     // 将指定DIV中的内容写入该网页
+ 6     newwindow.document.write(document.getElementById('PrintArea').innerHTML);
+ 7     newwindow.document.close();
+ 8 
+ 9     // 打印该网页
+10     newwindow.focus();
+11     newwindow.print();
+12 
+13     // 打印完毕后关闭该窗口
+14     newwindow.close();
+15     return;
+16 }
